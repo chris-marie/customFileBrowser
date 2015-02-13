@@ -3,6 +3,7 @@ body {
     padding: 3em;
     margin: 0;
 }
+
 input, select, textarea, button {
     font: 200 1em 'Helvetica Neue', 'Segoe UI', 'Droid Sans', 'Helvetica';
     outline: none;
@@ -11,24 +12,48 @@ input, select, textarea, button {
     background-color: rgba(255, 255, 255, 0.7);
     margin: 0.35em 0.5em;
 }
+
 .panel {
     padding: 1em;
     background-color: #eee;
     margin: 1em;
 }
+
 button, input[type="submit"] {
     border-radius: 0.3em;
 }
+
 button:hover, input[type="submit"]:hover {
     background-color: #777;
     color: white;
     transition: all 150ms ease;
     cursor: pointer;
 }
+
+
 .custom-filepicker {
     border: 1px solid #eee;
     padding: 0.3em;
 }
+
 .custom-filepicker input[type="file"] {
     display: none;
+}
+
+.custom-filepicker .file-container {
+    margin: 0.5em;
+    padding: 0.2em;
+}
+
+.custom-filepicker .file-container > div {
+    display: inline-block;
+    margin: 0.25em 0.5em;
+    font-size: 0.85em;
+    color: #777;
+}
+
+.custom-filepicker .file-container .file-name {
+    color: #333;
+    font-size: 1em;
+
 }
