@@ -21,6 +21,7 @@
         }
         function FilePicker(div_element) {
             this.btn_browse = createElement('button', div_element, 'Select File(s)', 'file-select');
+            this.btn_reset = createElement('button', div_element, 'Reset File(s)', 'file-select');
             this.input_element = createElement('input', div_element, '');
             this.input_element.setAttribute('multiple', 'multiple');
             this.input_element.setAttribute('type', 'file');
@@ -31,6 +32,11 @@
             self.files = [];
             this.btn_browse.addEventListener('click', function () {
                 input.click();
+            });
+
+            this.btn_reset.addEventListener('click', function () {
+                self.files = [];
+                self.showfiles();
             });
             input.addEventListener('change', function () {
                 var files = Array.prototype.slice.call(this.files);
@@ -49,6 +55,11 @@
                 createElement('div', file_container, file.size, 'file-size');
                 createElement('div', file_container, file.lastModifiedDate, 'file-date');
                 createElement('div', file_container, file.type, 'file-type');
+                createElement('button', file_container, '','remove').addEventListener('click', function () {
+                    var index = +this.parentNode.dataset.fileid;
+                    self.files.splice(index,1);
+                    self.showfiles();
+                });
             });
         }
     </script>
