@@ -27,24 +27,49 @@
                 image_files.forEach(function (image_file) {
                     printImageFromFile(image_file,container);
                 });
+
+                var promises = image_files.map(getImageReadPromise);
+
+                Promise.all(promises).then(function (data) {
+                    // resolve function
+                    console.log(data);
+
+                    data.forEach(function (src) {
+                        var image = document.createElement('img');
+                        image.src = src;
+                        container.appendChild(image);
+                    });
+
+                }, function () {
+                    // reject function
+                    console.log('Error while reading files....');
+                });
+
             });
         });
 
         function printImageFromFile(file, div_container) {
             var filereader = new FileReader();
-
-
-
             filereader.addEventListener('loadend', function () {
                // console.log(this.result);
                 var img = document.createElement('img');
                 div_container.appendChild(img);
                 img.src = this.result;
             });
-
             filereader.readAsDataURL(file);
         }
 
+        function getImageReadPromise(file) {
+            return new Promise(function (resolve, reject) {
+                filereader.addEventListener('loadend', function () {
+                    resolve(filereader.result);
+                });
+                filereader.addEventListener('error', function () {
+                    reject();
+                });
+                filereader.readAsDataURL(file);
+            });
+        }
     </script>
 </head>
 <body>

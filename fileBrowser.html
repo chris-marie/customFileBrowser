@@ -5,6 +5,12 @@
     <title>File Picker</title>
     <link rel="stylesheet" href="base.css"/>
     <script>
+
+        // todo add a thumbnail for hovering over files that are images
+        // todo memoize the thumbnails so that it doesn't go back to the filereader everytime - cache of thumbnails, output data url
+        // todo generate hashes of files... hashes up the file output... embed hash when user is selecting files.... put in data-hash attribute
+        // todo write and 'upload files' feature
+
         document.addEventListener('DOMContentLoaded', function () {
             // look for all elements that have the custom-filepicker class and initiate the FilePicker for them
             var filepickers = document.querySelectorAll('.custom-filepicker');
